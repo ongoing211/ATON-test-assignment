@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Тестовое задание: таблица1</title>
+        <title>Тестовое задание</title>
         <style>
             td{
                 border: solid 1px silver;
@@ -41,9 +41,12 @@ if ($sql = "CREATE DATABASE IF NOT EXISTS bolgovaDB") {
                 (2, 'Австрия'),
                 (3, 'Франция');";
     $pdo->exec($sql);
-    //можно в ту же переменную $sql_t, $sql_s и даже в просто $sql всё
-    $sql = "CREATE TABLE IF NOT EXISTS Cities (ID integer auto_increment primary key, CITY varchar(30), 
-               COUNTRY_ID integer)";
+    
+    $sql = "CREATE TABLE IF NOT EXISTS Cities (
+                    ID integer auto_increment primary key, 
+                    CITY varchar(30), 
+                    COUNTRY_ID integer),
+                    FOREIGN  KEY (COUNTRY_ID) REFERENCES Countries(ID))";
     $pdo->exec($sql);
     $sql = "INSERT INTO Cities (ID, CITY, COUNTRY_ID)
               VALUES
@@ -69,7 +72,7 @@ if ($sql = "CREATE DATABASE IF NOT EXISTS bolgovaDB") {
                 (4, 'Ludvig', 'Perl', 7),
                 (5, 'Gans', 'Rogge', 1),
                 (6, 'Ulrih', 'Till', 2),
-                (7, 'Stepan', 'Stegal', 8),
+                (7, 'Stepan', 'Segal', 8),
                 (8, 'Milosh', 'Pay', 5),
                 (9, 'Matie', 'Rohau', 5),
                 (10, 'Jan', 'Fogel', 4),
