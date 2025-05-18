@@ -45,7 +45,7 @@ if ($sql = "CREATE DATABASE IF NOT EXISTS bolgovaDB") {
     $sql = "CREATE TABLE IF NOT EXISTS Cities (
                     ID integer auto_increment primary key, 
                     CITY varchar(30), 
-                    COUNTRY_ID integer),
+                    COUNTRY_ID integer,
                     FOREIGN  KEY (COUNTRY_ID) REFERENCES Countries(ID))";
     $pdo->exec($sql);
     $sql = "INSERT INTO Cities (ID, CITY, COUNTRY_ID)
@@ -61,8 +61,12 @@ if ($sql = "CREATE DATABASE IF NOT EXISTS bolgovaDB") {
                 (9, 'Гамбург', 1);";
     $pdo->exec($sql);
 
-    $sql = "CREATE TABLE IF NOT EXISTS Users (ID integer auto_increment primary key, FIRST_NAME varchar(30), 
-               LAST_NAME varchar(30), CITY_ID integer)";
+    $sql = "CREATE TABLE IF NOT EXISTS Users (
+                ID integer auto_increment primary key, 
+                FIRST_NAME varchar(30), 
+                LAST_NAME varchar(30), 
+                CITY_ID integer,
+                FOREIGN KEY CITY_ID REFERENCES Cities(ID))";
     $pdo->exec($sql);
     $sql = "INSERT INTO Users (ID, FIRST_NAME, LAST_NAME, CITY_ID)
               VALUES

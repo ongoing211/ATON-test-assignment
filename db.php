@@ -85,10 +85,6 @@ class Database
 
     }
 
-    //function function filter()
-    //{
-        
-    //}
 
     
 }
